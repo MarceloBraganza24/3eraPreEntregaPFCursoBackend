@@ -17,8 +17,20 @@ const saveCartService = async (cart) => {
     return cart;
 }
 
+const updateCartByIdService = async (cid, cart) => {
+    await cartsManager.update(cid, cart);
+    return cart;
+}
+
+const eliminateCartByIdService = async (id) => {
+    const cart = await cartsManager.eliminate(id);
+    return cart;
+}
+
 export {
     getCartByIdService,
     getCartsService,
-    saveCartService
+    saveCartService,
+    updateCartByIdService,
+    eliminateCartByIdService
 }

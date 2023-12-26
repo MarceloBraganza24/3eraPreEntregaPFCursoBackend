@@ -30,7 +30,6 @@ const save = async (req, res) => {
 const finalizePurchase = async (req, res) => {
     try {
         const { cid } = req.params;
-        
         const userJWT = req.cookies['TokenJWT'];
         const purchaser = await ticketsService.getPurchaser(userJWT);
         const cart = await cartsService.getCartByIdService(cid);

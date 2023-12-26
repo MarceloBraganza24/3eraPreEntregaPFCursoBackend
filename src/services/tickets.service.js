@@ -28,7 +28,7 @@ const createTicket = async (purchaser, cart) => {
     const code = Date.now() + Math.floor(Math.random() * 100000 + 1);
 
     const currentProducts = cart.products.filter((product) => 
-        products.includes(product._id)
+        cart.products.includes(product._id)
     );
 
     const amount = currentProducts.reduce((acc, prev) => {
@@ -38,8 +38,8 @@ const createTicket = async (purchaser, cart) => {
 
     const ticket = {
         code,
-        purchase_datetime: Date.now(),
-        amount,
+        purchase_datetime:  new Date(),
+        amount: 1,
         purchaser: purchaser
     }
     await ticketsManager.save(ticket);

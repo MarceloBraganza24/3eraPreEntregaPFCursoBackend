@@ -17,4 +17,12 @@ export default class ProductsRepository {
         const result = await this.dao.save(cart);
         return result;
     }
+    update = async (id, cart) => {
+        const result = await this.dao.update(id, cart);
+        return result;
+    }
+    eliminate = async (id) => {
+        const result = await this.dao.eliminate(id);
+        return result;
+    }
 }

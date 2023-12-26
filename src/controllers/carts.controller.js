@@ -22,19 +22,30 @@ const save = async (req, res) => {
     }
 }
 
-/* const finalizePurchase = async (req, res) => {
+const update = async (req, res) => {
     try {
         const { cid } = req.params;
-        const cart = await cartsService.getCartByIdService(cid);
-        res.send(cart)
-        //console.log(cart)
+        const cart = req.body;
+        const cartUpdated = await cartsService.updateCartByIdService(cid, cart); 
+        res.send(cartUpdated);
     } catch (error) {
         res.status(500).send({ error: error.message });
     }
-} */
+}
+
+const eliminate = async (req, res) => {
+    try {
+        const { cid } = req.params;
+        const removedCart = await cartsService.eliminateCartByIdService(cid); 
+        res.send({ removedCart: removedCart });
+    } catch (error) {
+        res.status(500).send({ error: error.message });
+    }
+}
 
 export {
     getAll,
     save,
-    //finalizePurchase
+    update,
+    eliminate
 }

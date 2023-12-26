@@ -3,20 +3,17 @@ import mongoose from 'mongoose';
 const cartsCollection = 'carts';
 
 const cartsSchema = new mongoose.Schema({
-    products: {
-        type: [
-            {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'products',
-                quantity: {
-                    type: Number,
-                    default: 1
-                }                
-            }            
-        ],
-        default: []
-    },
-    
+    products: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'products',
+            quantity: {
+                type: Number,
+                default: 1
+            },
+            default: []
+        }
+    ]       
 });
 
 cartsSchema.pre('find', function() {

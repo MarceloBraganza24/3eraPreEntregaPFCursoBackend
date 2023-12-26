@@ -31,7 +31,30 @@ const save = async (req, res) => {
     }
 }
 
+const update = async (req, res) => {
+    try {
+        const { pid } = req.params;
+        const product = req.body;
+        const productUpdated = await productsService.getProductByIdService(pid, product); 
+        res.send(productUpdated);
+    } catch (error) {
+        res.status(500).send({ error: error.message });
+    }
+}
+
+const eliminate = async (req, res) => {
+    try {
+        const { pid } = req.params;
+        const removedProduct = await productsService.eliminateProductByIdService(pid); 
+        res.send({ removedProduct: removedProduct });
+    } catch (error) {
+        res.status(500).send({ error: error.message });
+    }
+}
+
 export {
     getAll,
-    save
+    save,
+    update,
+    eliminate
 }

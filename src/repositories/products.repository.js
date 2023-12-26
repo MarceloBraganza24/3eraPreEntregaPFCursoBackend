@@ -13,4 +13,12 @@ export default class ProductsRepository {
         const result = await this.dao.save(product);
         return result;
     }
+    update = async (id, product) => {
+        const result = await this.dao.update(id, product);
+        return result;
+    }
+    eliminate = async (id) => {
+        const result = await this.dao.eliminate(id);
+        return result;
+    }
 }

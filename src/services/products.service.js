@@ -7,12 +7,24 @@ const getProductsService = async (page) => {
     return products;
 }
 
+const getProductByIdService = async (id, product) => {
+    await productsManager.update(id, product);
+    return product;
+}
+
 const saveProductService = async (product) => {
     await productsManager.save(product);
     return product;
 }
 
+const eliminateProductByIdService = async (id) => {
+    const product = await productsManager.eliminate(id);
+    return product;
+}
+
 export {
     getProductsService,
-    saveProductService
+    getProductByIdService,
+    saveProductService,
+    eliminateProductByIdService
 }
