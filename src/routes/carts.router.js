@@ -1,6 +1,5 @@
 import { Router } from 'express';
-import { getAll, save, update, eliminate }from '../controllers/carts.controller.js';
-import { finalizePurchase }from '../controllers/ticket.controller.js';
+import { getAll, save, update, eliminate, finalizePurchase }from '../controllers/carts.controller.js';
 import passport from 'passport';
 import { authorization } from '../utils.js';
 

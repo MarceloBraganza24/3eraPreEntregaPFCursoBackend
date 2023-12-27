@@ -43,9 +43,22 @@ const eliminate = async (req, res) => {
     }
 }
 
+const finalizePurchase = async (req, res) => {
+    try {
+        const { cid } = req.params;
+        const jwtPurchaser = req.cookies['TokenJWT'];
+        const purchaser = await cartsService.getPurchaser(jwtPurchaser);
+        const result = await cartsService.purchase(cid, purchaser);
+        res.status(201).send({ status: 'success', result });
+    } catch (error) {
+        res.status(500).send({ error: error.message });
+    }
+}
+
 export {
     getAll,
     save,
     update,
-    eliminate
+    eliminate,
+    finalizePurchase
 }
